@@ -11,9 +11,17 @@ class TedViewModel : ViewModel() {
     val items: LiveData<List<TedObject>> get() = _items
 
     init {
-
         viewModelScope.launch {
             _items.value = WebAccess.getListOfTeds()
+        }
+    }
+
+    private val _itemsXML = MutableLiveData<List<TedObjectXML>>()
+    val itemsXML: LiveData<List<TedObjectXML>> get() = _itemsXML
+
+    init {
+        viewModelScope.launch {
+            _itemsXML.value = WebAccessXML.getListOfTedsXML()
         }
     }
 }

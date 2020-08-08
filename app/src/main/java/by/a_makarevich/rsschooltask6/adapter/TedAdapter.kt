@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
 
-class TedAdapter() : RecyclerView.Adapter<TedViewHolder>() {
+class TedAdapter : RecyclerView.Adapter<TedViewHolder>() {
 
     private val items = mutableListOf<TedObject>()
 
@@ -29,25 +29,19 @@ class TedAdapter() : RecyclerView.Adapter<TedViewHolder>() {
         holder.bind(items[position].url)
         holder.textViewDuration?.text = items[position].text
         Log.d("MyLog", "onBindViewHolder")
-
-
     }
     fun addItems(newItems: List<TedObject>) {
         items.addAll(newItems)
         notifyDataSetChanged()
     }
-
 }
-class TedViewHolder(item_view: View) : RecyclerView.ViewHolder(item_view) {
-    val textViewTitle: TextView? = item_view.findViewById(R.id.textViewTitle)
-    val textViewDescription: TextView? = item_view.findViewById(R.id.textViewDescription)
-    val imageView = item_view.findViewById<ImageView>(R.id.imageView)
-    val textViewDuration: TextView? = item_view.findViewById(R.id.textViewDuration)
+class TedViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    val textViewTitle: TextView? = itemView.findViewById(R.id.textViewTitle)
+    val textViewDescription: TextView? = itemView.findViewById(R.id.textViewDescription)
+    val imageView = itemView.findViewById<ImageView>(R.id.imageView)
+    val textViewDuration: TextView? = itemView.findViewById(R.id.textViewDuration)
 
     fun bind(imageURL: String?) {
         imageView.load(imageURL)
     }
-
-
 }
-

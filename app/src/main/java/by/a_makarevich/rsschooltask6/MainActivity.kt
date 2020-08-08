@@ -16,7 +16,6 @@ class MainActivity : AppCompatActivity() {
 
     private var currentFragment = CurrentFragment.FRAGMENT_JSON
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -30,8 +29,8 @@ class MainActivity : AppCompatActivity() {
             when (v.id) {
                 R.id.buttonJson -> {
                     Log.d("MyLog", "click buttonJSON")
-                    if (currentFragment == CurrentFragment.FRAGMENT_XML){
-                        title = "Все видео"
+                    if (currentFragment == CurrentFragment.FRAGMENT_XML) {
+                        title = "Все видео JSON"
                         currentFragment = CurrentFragment.FRAGMENT_JSON
                         val fragmentJSON = FragmentJSON.newInstance(title.toString())
                         val fragmentManager: FragmentManager = supportFragmentManager
@@ -40,12 +39,11 @@ class MainActivity : AppCompatActivity() {
                         fragmentTransaction.commit()
                         Log.d("MyLog", "showFragmentJSON")
                     }
-
                 }
                 R.id.buttonXML -> {
                     Log.d("MyLog", "click buttonXML")
-                    if (currentFragment == CurrentFragment.FRAGMENT_JSON){
-                        title = "Все видео"
+                    if (currentFragment == CurrentFragment.FRAGMENT_JSON) {
+                        title = "Все видео XML"
                         currentFragment = CurrentFragment.FRAGMENT_XML
                         val fragmentXml = FragmentXML.newInstance(title.toString())
                         val fragmentManager: FragmentManager = supportFragmentManager
@@ -56,15 +54,12 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             }
-
         }
         buttonJson.setOnClickListener(onclicklistener)
         buttonXML.setOnClickListener(onclicklistener)
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             val inflater: MenuInflater = menuInflater
             inflater.inflate(R.menu.menu, menu)
@@ -80,7 +75,6 @@ class MainActivity : AppCompatActivity() {
             R.id.menu_bright_theme -> {
                 setTheme(AppCompatDelegate.MODE_NIGHT_NO, 0)
             }
-
         }
         return super.onOptionsItemSelected(item)
     }
@@ -91,7 +85,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showFragmentRecycler(myJSON: String) {
-        title = "Все видео"
+        title = "Все видео JSON"
         val fragmentJSON = FragmentJSON.newInstance(myJSON)
         val fragmentManager: FragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
@@ -100,11 +94,9 @@ class MainActivity : AppCompatActivity() {
         Log.d("MyLog", "showFragmentRecycler")
     }
 
-    companion object{
+    companion object {
         enum class CurrentFragment {
             FRAGMENT_JSON, FRAGMENT_XML
         }
     }
 }
-
-

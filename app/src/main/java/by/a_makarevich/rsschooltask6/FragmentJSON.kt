@@ -16,16 +16,13 @@ class FragmentJSON : Fragment() {
     private val tedAdapter = TedAdapter()
     private val tedViewModel: TedViewModel by activityViewModels()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d("MyLog", "OnCreateFragment")
         arguments?.let {
             str = it.getString(ARG_PARAM1)
         }
-
     }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -33,18 +30,13 @@ class FragmentJSON : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_gson, container, false)
         Log.d("MyLog", "OnCreateView")
-
-
         val recyclerView: RecyclerView? = view?.findViewById(R.id.recyclerView)
         recyclerView?.setHasFixedSize(true)
-
-
         recyclerView?.apply {
             this.adapter = tedAdapter
         }
         return view
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -52,7 +44,6 @@ class FragmentJSON : Fragment() {
             it ?: return@Observer
             tedAdapter.addItems(it)
         })
-
     }
 
     companion object {
@@ -64,7 +55,5 @@ class FragmentJSON : Fragment() {
                 }
             }
         private const val ARG_PARAM1 = "param1"
-
     }
-
 }
