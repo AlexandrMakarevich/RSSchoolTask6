@@ -6,13 +6,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
-class TedViewModel : ViewModel() {
-    private val _items = MutableLiveData<List<TedObject>>()
-    val items: LiveData<List<TedObject>> get() = _items
+class TedViewModelXML : ViewModel() {
+
+    private val _itemsXML = MutableLiveData<List<TedObjectXML>>()
+    val itemsXML: LiveData<List<TedObjectXML>> get() = _itemsXML
 
     init {
         viewModelScope.launch {
-            _items.value = WebAccess.getListOfTeds()
+            _itemsXML.value = WebAccessXML.getListOfTedsXML()
         }
     }
 

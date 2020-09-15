@@ -42,7 +42,7 @@ class FragmentJSON : Fragment() {
 
         tedViewModel.items.observe(viewLifecycleOwner, Observer {
             it ?: return@Observer
-            tedAdapter.addItems(it)
+            tedAdapter.setItems(it)
         })
     }
 

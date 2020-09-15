@@ -14,7 +14,7 @@ class FragmentXML : Fragment() {
 
     private var str: String? = null
     private val tedAdapter = TedAdapterXML()
-    private val tedViewModel: TedViewModel by activityViewModels()
+    private val tedViewModel: TedViewModelXML by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

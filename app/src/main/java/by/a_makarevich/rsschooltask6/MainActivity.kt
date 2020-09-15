@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         showFragmentRecycler(string1)
         Log.d("MyLog", "OnCreateActivity")
 
-        val onclicklistener = View.OnClickListener { v ->
+        val onClickListener = View.OnClickListener { v ->
             when (v.id) {
                 R.id.buttonJson -> {
                     Log.d("MyLog", "click buttonJSON")
@@ -55,8 +55,8 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-        buttonJson.setOnClickListener(onclicklistener)
-        buttonXML.setOnClickListener(onclicklistener)
+        buttonJson.setOnClickListener(onClickListener)
+        buttonXML.setOnClickListener(onClickListener)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

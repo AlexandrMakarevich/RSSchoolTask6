@@ -11,7 +11,7 @@ import coil.api.load
 
 class TedAdapter : RecyclerView.Adapter<TedViewHolder>() {
 
-    private val items = mutableListOf<TedObject>()
+    private var items = listOf<TedObject>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TedViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.recycler_item, null)
@@ -30,8 +30,8 @@ class TedAdapter : RecyclerView.Adapter<TedViewHolder>() {
         holder.textViewDuration?.text = items[position].text
         Log.d("MyLog", "onBindViewHolder")
     }
-    fun addItems(newItems: List<TedObject>) {
-        items.addAll(newItems)
+    fun setItems(newItems: List<TedObject>) {
+        items = newItems
         notifyDataSetChanged()
     }
 }

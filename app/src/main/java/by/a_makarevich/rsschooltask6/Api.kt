@@ -21,19 +21,17 @@ object WebAccess {
     private val tedService = retrofit.create(TheTedApi::class.java)
 
     suspend fun getListOfTeds(): List<TedObject> {
-        return withContext(Dispatchers.IO) {
-            tedService.getListOfTeds()
-                .channel
-                .items
-                .map {
-                    TedObject(
-                        it.title,
-                        it.description,
-                        it.image.url,
-                        it.duration.text
-                    )
-                }
-        }
+        return tedService.getListOfTeds()
+            .channel
+            .items
+            .map {
+                TedObject(
+                    it.title,
+                    it.description,
+                    it.image.url,
+                    it.duration.text
+                )
+            }
     }
 }
 
@@ -51,18 +49,16 @@ object WebAccessXML {
     private val tedServiceXML = WebAccessXML.retrofitXML.create(TheTedApiXML::class.java)
 
     suspend fun getListOfTedsXML(): List<TedObjectXML>? {
-        return withContext(Dispatchers.IO) {
-            tedServiceXML.getListOfTedsXML()
-                .channel
-                ?.item
-                ?.map {
-                    TedObjectXML(
-                        it.myTitle,
-                        it.myDescription,
-                        it.myItunesImage?.urlXml,
-                        it.myItunesDuration
-                    )
-                }
-        }
+        return tedServiceXML.getListOfTedsXML()
+            .channel
+            ?.item
+            ?.map {
+                TedObjectXML(
+                    it.myTitle,
+                    it.myDescription,
+                    it.myItunesImage?.urlXml,
+                    it.myItunesDuration
+                )
+            }
     }
 }
